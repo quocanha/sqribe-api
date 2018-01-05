@@ -1,0 +1,56 @@
+// The buildscript block defines the dependencies required for this build script
+// to run.
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
+    }
+}
+
+// The other dependencies defined here are dependencies for the actual program
+// to run.
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'sqribe-api'
+    version =  '0.1.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// The repositories here are used to look up dependencies defines below.
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    // The main spring boot framework we're using.
+    compile("org.springframework.boot:spring-boot-starter-web")
+
+    // REST spring module
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+
+    // The main spring boot security framework we're using.
+    // compile("org.springframework.boot:spring-boot-starter-security")
+
+    // Spring JPA for data access.
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+
+
+    compile('org.springframework.security:spring-security-core:4.2.3.RELEASE')
+    compile('org.springframework.security:spring-security-web:4.2.3.RELEASE')
+    compile('org.springframework.security:spring-security-config:4.2.3.RELEASE')
+
+    // Use MySQL Connector-J
+    compile 'mysql:mysql-connector-java'
+
+    // Test compile dependencies are required for testing the application.
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
