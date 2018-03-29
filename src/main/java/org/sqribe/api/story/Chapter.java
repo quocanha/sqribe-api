@@ -1,4 +1,4 @@
-package org.sqribe.api.module.book.domain;
+package org.sqribe.api.story;
 
 import javax.persistence.*;
 
@@ -6,22 +6,28 @@ import javax.persistence.*;
 public class Chapter {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    @Basic(optional = false)
+    @Column(nullable = false)
     private String title;
 
-    @Basic(optional = false)
-    private int ordinal;
-
-    @Basic(optional = false)
+    @Column
     private String content;
 
     @ManyToOne
-    @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_FK"))
-    private Book book;
+    private Story story;
 
-    public Chapter() {}
+    protected Chapter() {}
+
+    public Chapter(String title) {
+        this.title = title;
+    }
+
+    public Chapter(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
 
     public long getId() {
         return id;
@@ -39,19 +45,19 @@ public class Chapter {
         this.title = title;
     }
 
-    public int getOrdinal() {
-        return ordinal;
-    }
-
-    public void setOrdinal(int ordinal) {
-        this.ordinal = ordinal;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
         this.content = content;
+    }
+
+    public Story getStory() {
+        return story;
+    }
+
+    public void setStory(Story story) {
+        this.story = story;
     }
 }

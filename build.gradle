@@ -1,56 +1,24 @@
-// The buildscript block defines the dependencies required for this build script
-// to run.
-buildscript {
-    repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.7.RELEASE")
-    }
+plugins {
+    id 'java'
+    id 'war'
 }
-
-// The other dependencies defined here are dependencies for the actual program
-// to run.
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
 
 jar {
     baseName = 'sqribe-api'
-    version =  '0.1.0'
+    version =  '0.0.1-SNAPSHOT'
 }
 
-sourceCompatibility = 1.8
-targetCompatibility = 1.8
-
-// The repositories here are used to look up dependencies defines below.
 repositories {
+    jcenter()
     mavenCentral()
 }
 
 dependencies {
-    // The main spring boot framework we're using.
-    compile("org.springframework.boot:spring-boot-starter-web")
+    compile 'org.springframework.boot:spring-boot-starter-web:2.0.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-devtools:2.0.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-jpa:2.0.0.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-data-rest:2.0.0.RELEASE'
 
-    // REST spring module
-    compile("org.springframework.boot:spring-boot-starter-data-rest")
-
-    // The main spring boot security framework we're using.
-    // compile("org.springframework.boot:spring-boot-starter-security")
-
-    // Spring JPA for data access.
-    compile("org.springframework.boot:spring-boot-starter-data-jpa")
-
-
-    compile('org.springframework.security:spring-security-core:4.2.3.RELEASE')
-    compile('org.springframework.security:spring-security-web:4.2.3.RELEASE')
-    compile('org.springframework.security:spring-security-config:4.2.3.RELEASE')
-
-    // Use MySQL Connector-J
-    compile 'mysql:mysql-connector-java'
-
-    // Test compile dependencies are required for testing the application.
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+    compile group: 'com.h2database', name: 'h2', version: '1.3.148'
 }
