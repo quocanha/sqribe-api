@@ -1,4 +1,4 @@
-group "org.sqribe.data-api"
+group "org.sqribe.api"
 version "1.0-SNAPSHOT"
 
 buildscript {
@@ -45,10 +45,10 @@ dependencies {
 }
 
 bootJar {
-    baseName = 'sqribe-data-api'
+    baseName = 'sqribe-api'
     version =  '0.1.0'
 }
-group 'org.sqribe.data-api'
+group 'org.sqribe.api'
 version '1.0-SNAPSHOT'
 
 sourceCompatibility = 1.8
