@@ -46,6 +46,9 @@ public class User {
     @Column(nullable = true)
     private String note;
 
+    @OneToMany
+    private Collection<Story> stories = new ArrayList<Story>();
+
 
     @ManyToMany
     private Collection<Authority> authorities = new ArrayList<Authority>();

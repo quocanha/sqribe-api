@@ -1,0 +1,40 @@
+type Query {
+    story(id: ID): Story
+    stories(id: ID): [Story!]
+    principal: User
+}
+
+type Authority {
+    id: ID
+    authority: String
+}
+
+type User {
+    id: ID
+    username: String
+    accountExpired: Boolean!
+    accountLocked: Boolean!
+    credentialsExpired: Boolean!
+    enabled: Boolean!
+
+    firstName: String!
+    lastName: String!
+    note: String!
+
+    stories: [Story!]
+
+    authorities: [Authority!]!
+}
+
+type Chapter {
+    id: ID
+    title: String
+    content: String
+}
+
+type Story {
+    id: ID
+    title: String
+    chapters: [Chapter!]
+    owner: User
+}

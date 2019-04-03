@@ -2,14 +2,18 @@ group "org.sqribe.api"
 version "1.0-SNAPSHOT"
 
 buildscript {
+    ext {
+        springBootVersion = '2.1.2.RELEASE'
+    }
     repositories {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
     }
 }
 
+apply plugin: 'idea'
 apply plugin: 'java'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
@@ -41,6 +45,28 @@ dependencies {
     compile("org.springframework.data:spring-data-rest-hal-browser")
     compile("com.h2database:h2")
     compile("org.projectlombok:lombok")
+
+
+    compile 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+    compile 'com.graphql-java-kickstart:graphql-spring-boot-starter:5.7.0'
+    // to embed GraphiQL tool
+    runtime 'com.graphql-java-kickstart:graphiql-spring-boot-starter:5.7.0'
+    // to embed Voyager tool
+    runtime 'com.graphql-java-kickstart:voyager-spring-boot-starter:5.7.0'
+
+    compile 'com.graphql-java-kickstart:graphql-java-tools:5.4.0'
+
+
+    implementation 'com.graphql-java:graphql-java:11.0'
+    implementation 'com.graphql-java:graphql-java-spring-boot-starter-webmvc:1.0'
+    implementation 'com.google.guava:guava:26.0-jre'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
 }
 
