@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Component;
 import org.sqribe.api.graphql.resolvers.AuthResolver;
+import org.sqribe.api.graphql.resolvers.MutationResolver;
 import org.sqribe.api.graphql.resolvers.StoryResolver;
 import org.sqribe.api.models.Story;
 import org.sqribe.api.models.User;
@@ -25,4 +26,7 @@ public class GraphQLDataFetchers {
 
     @Autowired
     AuthResolver auth;
+
+    @Autowired
+    MutationResolver mutation;
 }

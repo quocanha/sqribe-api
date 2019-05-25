@@ -48,6 +48,8 @@ public class GraphQLProvider {
                         .dataFetcher("principal", graphQLDataFetchers.auth.getPrincipal())
                         .dataFetcher("story", graphQLDataFetchers.story.getStory())
                         .dataFetcher("stories", graphQLDataFetchers.story.getStories())
+                ).type(newTypeWiring("Mutation")
+                        .dataFetcher("updateStory", graphQLDataFetchers.mutation.updateStory())
                 )
 //                .type(newTypeWiring("Book")
 //                        .dataFetcher("author", graphQLDataFetchers.getAuthorDataFetcher()))

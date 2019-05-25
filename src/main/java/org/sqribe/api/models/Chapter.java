@@ -1,8 +1,11 @@
 package org.sqribe.api.models;
 
 import lombok.Data;
+import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -24,4 +27,12 @@ public class Chapter {
     public Chapter(String title) {
         this.title = title;
     }
+
+    @CreatedDate
+    @Column
+    private Date created;
+
+    @UpdateTimestamp
+    @Column
+    private Date updated;
 }
